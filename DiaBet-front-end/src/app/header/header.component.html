@@ -1,0 +1,63 @@
+<nav class="navbar navbar-light bg-danger">
+    <a class="navbar-brand">DiaBet</a>
+    <button class="btn btn-outline-warning btn-light  my-2 my-sm-0" type="submit"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Contest</a></button>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="email" aria-label="Search">
+      <button (click)="logged()" class="btn btn-outline-success btn-light  my-2 my-sm-0" type="submit">Log in</button>
+    </form>
+</nav>
+
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Enter Contest Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <br>
+
+        <form [formGroup]="contestForm" (ngSubmit)="alert()">
+
+          <input formControlName="name"/>
+
+          <div formArrayName="teams" *ngFor="let team of getTeamsControls(); index as i">
+
+          <div formGroupName="{{i}}">
+
+            <label> name </label>
+            <input type="text" id="name" name="name" formControlName="name">
+
+            <label> wins </label>
+            <input type="text" id="wins" name="wins" formControlName="wins">
+
+            <label> loses </label>
+            <input type="text" id="loses" name="loses" formControlName="loses">
+
+            </div>
+
+          </div>
+
+          <p>
+            <button type="submit">Submit</button>
+          </p>
+
+        </form>
+
+
+
+
+
+
+       </div>
+
+      </div>
+
+    </div>
+</div>
+
+
+
