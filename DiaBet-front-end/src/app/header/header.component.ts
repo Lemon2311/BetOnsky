@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
           name : new FormControl(''),
           wins : new FormControl(''),
-          loses : new FormControl('')
+          losses : new FormControl('')
 
 
       })
@@ -36,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
           name : new FormControl(''),
           wins : new FormControl(''),
-          loses : new FormControl('')
+          losses : new FormControl('')
 
       })
 

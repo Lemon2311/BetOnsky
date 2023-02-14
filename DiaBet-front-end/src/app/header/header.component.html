@@ -21,29 +21,37 @@
         <br>
 
         <form [formGroup]="contestForm" (ngSubmit)="alert()">
+          <div class="form-group">
 
-          <input formControlName="name"/>
+          <input class="form-control" formControlName="name" placeholder="Contest name"/>
+          <br>
 
           <div formArrayName="teams" *ngFor="let team of getTeamsControls(); index as i">
 
+            <label> Team {{i+1}} </label>
+            <br>
+            <br>
+
           <div formGroupName="{{i}}">
 
-            <label> name </label>
-            <input type="text" id="name" name="name" formControlName="name">
+            <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="name">
+            <br>
 
-            <label> wins </label>
-            <input type="text" id="wins" name="wins" formControlName="wins">
+            <input type="text" class="form-control" id="wins" name="wins" formControlName="wins" placeholder="wins">
+            <br>
 
-            <label> loses </label>
-            <input type="text" id="loses" name="loses" formControlName="loses">
+            <input type="text" class="form-control" id="losses" name="losses" formControlName="losses" placeholder="losses">
+            <br>
 
             </div>
 
           </div>
 
           <p>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
           </p>
+
+        </div>
 
         </form>
 

@@ -1,5 +1,9 @@
 package com.project.Team;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,23 +20,19 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "team")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "team_contest",
-            joinColumns = @JoinColumn(name = "team_id"),
-            inverseJoinColumns = @JoinColumn( name = "contest_id")
-    )
+    @ManyToMany(mappedBy = "teams", cascade = CascadeType.PERSIST)
     private List<Contest> contests;
 
     private String name;
 
-    private int wins, looses;
+    private int wins, losses;
 
 
 }

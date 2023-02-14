@@ -1,40 +1,58 @@
 <div id="carouselExampleControls" class="carousel slide p-5" data-mdb-interval="false">
   <div class="carousel-inner">
 
-    <div class="carousel-item active">
+
+
+    <div *ngFor="let object of objectList index as i" class="carousel-item active">
       <div class="card m-auto" style="width: 30rem; height: 20rem">
-        <img class="card-img-top" src="\assets\photos\CSASteaua.png" alt="Card image cap">
-        <img class="card-img-top" src="\assets\photos\1093.png" alt="Card image cap">
+
         <div class="card-body">
-          <h5 class="card-title">Cupa</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn px-5 pt-5">bidOnTeam1</a> <a href="#" class="btn px-5 pt-5">bidOnTeam2</a>
+
+          <div class="container">
+            <div class="row">
+              <div class="col align-self-start">
+
+              </div>
+              <div class="col align-self-center">
+                <h6 class="card-title">{{object.name}}</h6>
+              </div>
+              <div class="col align-self-end">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col align-self-start">
+                <h6 class="card-title">{{object.teams[0].name}}</h6>
+                <h6 class="card-title">wins</h6>
+                <h6 class="card-title">{{object.teams[0].wins}}</h6>
+                <h6 class="card-title">loses</h6>
+                <h6 class="card-title">{{object.teams[0].wins}}</h6>
+              </div>
+              <div class="col align-self-center">
+
+              </div>
+              <div class="col align-self-end">
+                <h6 class="card-title">{{object.teams[1].name}}</h6>
+                <h6 class="card-title">wins</h6>
+                <h6 class="card-title">{{object.teams[1].wins}}</h6>
+                <h6 class="card-title">loses</h6>
+                <h6 class="card-title">{{object.teams[1].wins}}</h6>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
     </div>
 
-    <div class="carousel-item">
-      <div class="card mx-auto" style="width: 30rem; height: 20rem">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="carousel-item">
-      <div class="card mx-auto" style="width: 30rem; height: 20rem">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
 
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/teams")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TeamController {
 
     @Autowired

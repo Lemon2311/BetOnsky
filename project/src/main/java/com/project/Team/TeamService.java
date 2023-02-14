@@ -2,7 +2,6 @@ package com.project.Team;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +37,7 @@ public class TeamService {
         theUser.map(team0 -> {
             team0.setName(team.getName());
             team0.setWins(team.getWins());
-            team0.setLooses(team.getLooses());
+            team0.setLosses(team.getLosses());
             team0.setContests(team.getContests());
             return null;
         });
