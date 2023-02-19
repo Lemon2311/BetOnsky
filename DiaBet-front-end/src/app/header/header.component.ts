@@ -51,19 +51,53 @@ export class HeaderComponent implements OnInit {
   getTeamsControls() { return (<FormArray>this.contestForm.get('teams')).controls;}
 
 
-  url='http://localhost:8082/contests';
+  email : any;
 
-  constructor(private http : HttpClient) { }
+  object: any;
+
+
+  url='http://localhost:8082';
+  contests='/contests';
+  users='/users';
+  usersUrl=this.url+this.users;
+
+  constructor(private http : HttpClient) {}
 
 
   logged(){
 
-    prompt("input passsword");
+
+
+    this.http.get(this.usersUrl+'/email/'+this.email).subscribe(data =>{
+       this.object=data;
+    });
+
+
+    let password = prompt("input passsword");
+
+    if(password==this.object.password){
+
+    alert('logged in');
+
+    }else  {
+
+      this.object.password = password;
+      this.object.email = this.email;
+
+      this.http.post(this.usersUrl, this.object).subscribe(result=>console.log(result));
+
+      alert('created user & logged in');
+
+    }
+
+    this.object.loggedIn=true;
+
+
   }
 
   addNewContest(data : any){
 
-   this.http.post(this.url, data).subscribe(result=>console.log(result));
+   this.http.post(this.url+this.contests, data).subscribe(result=>console.log(result));
 
    alert('contest aded');
 
