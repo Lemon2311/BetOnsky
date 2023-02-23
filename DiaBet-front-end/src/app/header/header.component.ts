@@ -48,12 +48,33 @@ export class HeaderComponent implements OnInit {
   })
 
 
+  userForm = new FormGroup({
+
+
+
+
+
+          email : new FormControl(''),
+          password : new FormControl('')
+
+
+  })
+
+
+
+
+
+
+
+
   getTeamsControls() { return (<FormArray>this.contestForm.get('teams')).controls;}
 
 
   email : any;
 
   object: any;
+
+  password : any;
 
 
   url='http://localhost:8082';
@@ -68,29 +89,35 @@ export class HeaderComponent implements OnInit {
 
 
 
-    this.http.get(this.usersUrl+'/email/'+this.email).subscribe(data =>{
-       this.object=data;
+    this.http.get(this.usersUrl+'/email/'+this.userForm.get('email')?.value).subscribe(data =>{
+
+      this.object=data;
+
+
+      if(this.userForm.get('password')?.value == this.object.password ){
+
+        alert('logged in');
+
+      }/*else  {
+
+
+
+        this.http.post(this.usersUrl, this.userForm.value).subscribe(result=>console.log(result));
+
+        alert('created user & logged in');
+
+      }*/
+
+
+
+
+
+
     });
 
 
-    let password = prompt("input passsword");
 
-    if(password==this.object.password){
 
-    alert('logged in');
-
-    }else  {
-
-      this.object.password = password;
-      this.object.email = this.email;
-
-      this.http.post(this.usersUrl, this.object).subscribe(result=>console.log(result));
-
-      alert('created user & logged in');
-
-    }
-
-    this.object.loggedIn=true;
 
 
   }
