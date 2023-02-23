@@ -1,8 +1,6 @@
 package com.project.User;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
 import lombok.AllArgsConstructor;
@@ -28,6 +26,8 @@ public class User {
     private String email;
 
     private String password;
+
+    private boolean loggedIn;
 
     private Boolean isAdmin;
 

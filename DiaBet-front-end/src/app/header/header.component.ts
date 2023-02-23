@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { data } from 'jquery';
 import { FormGroup, FormControl, Validators, FormArray} from '@angular/forms'
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -42,73 +43,67 @@ export class HeaderComponent implements OnInit {
 
     ])
 
-
-
-
   })
-
 
   userForm = new FormGroup({
 
-
-
-
-
-          email : new FormControl(''),
-          password : new FormControl('')
-
-
+    email : new FormControl(''),
+    password : new FormControl('')
   })
-
-
-
-
-
-
 
 
   getTeamsControls() { return (<FormArray>this.contestForm.get('teams')).controls;}
 
 
-  email : any;
+  user: any;
 
-  object: any;
+  isLoggedIn : boolean = false;
 
-  password : any;
+  isAdmin : boolean = false;
 
 
   url='http://localhost:8082';
   contests='/contests';
   users='/users';
+
   usersUrl=this.url+this.users;
+  contestsUrl=this.url+this.contests;
 
   constructor(private http : HttpClient) {}
 
 
   logged(){
 
+    let email = this.userForm.get('email')?.value;
+    let password = this.userForm.get('password')?.value;
 
+    if(email!=null)
+    this.http.get(this.usersUrl+'/email/'+email).subscribe(data =>{
 
-    this.http.get(this.usersUrl+'/email/'+this.userForm.get('email')?.value).subscribe(data =>{
+      this.user=data;
 
-      this.object=data;
-
-
-      if(this.userForm.get('password')?.value == this.object.password ){
+      if(this.user!=null && password !=null && password == this.user.password){
 
         alert('logged in');
 
-      }/*else  {
+      }else  {
 
-
+        console.log(this.userForm.value);
 
         this.http.post(this.usersUrl, this.userForm.value).subscribe(result=>console.log(result));
 
         alert('created user & logged in');
 
-      }*/
+      }
 
+      //this.http.patch(this.usersUrl+'/email/'+email+'/true', email).subscribe(result=>console.log(result));
 
+      this.isLoggedIn = true;
+
+      if(this.user.isAdmin==true)
+      this.isAdmin = true;
+      else
+      this.isAdmin = false;
 
 
 
@@ -134,7 +129,7 @@ export class HeaderComponent implements OnInit {
 
     console.log(this.contestForm.value);
 
-    this.http.post(this.url, this.contestForm.value).subscribe(result=>console.log(result));
+    this.http.post(this.contestsUrl, this.contestForm.value).subscribe(result=>console.log(result));
 
   }
 

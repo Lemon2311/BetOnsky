@@ -31,6 +31,12 @@ public class UserController {
         return user0;
     }
 
+    @PatchMapping("/email/{email}/{value}")
+    public void patchUserLoggedInState(@PathVariable(name = "email") String email,
+                                       @PathVariable(name = "value") boolean value){
+        userService.updateLoggedStateOfUser(email,value);
+    }
+
     @PostMapping
     public void addUser(@RequestBody User user) {
         userService.addUser(user);

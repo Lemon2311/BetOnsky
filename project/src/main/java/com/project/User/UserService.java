@@ -48,6 +48,15 @@ public class UserService {
         });
     }
 
+    public void updateLoggedStateOfUser(String email, boolean value){
+        Optional<User> theUser = userRepository.findByEmail(email);
+
+        theUser.map(user0 -> {
+           user0.setLoggedIn(value);
+           return null;
+        });
+    }
+
     //delete/delete/delete
     public void deleteUser(User user) {
         userRepository.delete(user);
