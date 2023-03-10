@@ -6,12 +6,19 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class DataService {
 
-  private stateSource = new BehaviorSubject<boolean>(false);
-  currentState = this.stateSource.asObservable();
+  private stateIsAdmin = new BehaviorSubject<boolean>(false);
+  currentIsAdmin = this.stateIsAdmin.asObservable();
+
+  private stateUserName = new BehaviorSubject<string>('');
+  currentUserName = this.stateUserName.asObservable();
 
   constructor() {}
 
-  changeMessage(message: boolean) {
-    this.stateSource.next(message);
+  changeIsAdmin(isAdmin: boolean) {
+    this.stateIsAdmin.next(isAdmin);
+  }
+
+  changeUserName(name: string) {
+    this.stateUserName.next(name);
   }
 }

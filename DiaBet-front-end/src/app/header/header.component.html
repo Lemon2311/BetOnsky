@@ -1,72 +1,114 @@
 <nav class="navbar navbar-light bg-danger">
-    <a class="navbar-brand">DiaBet</a>
-    <button [hidden]="!isAdmin" class="btn btn-outline-warning btn-light  my-2 my-sm-0" type="submit"><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Contest</a></button>
-    <form class="form-inline" [formGroup]="userForm" (ngSubmit)="logged();">
-      <input class="form-control mr-sm-2" formControlName="email" type="text"  placeholder="email">
-      <input class="form-control mr-sm-2" type="text" formControlName="password"  placeholder="password">
-      <button class="btn btn-outline-success btn-light  my-2 my-sm-0" type="submit">Log in</button>
-    </form>
+  <a class="navbar-brand">DiaBet</a>
+  <button
+    [hidden]="!isAdmin"
+    class="btn btn-outline-warning btn-light my-2 my-sm-0"
+    type="submit"
+  >
+    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >Add Contest</a
+    >
+  </button>
+  <form class="form-inline" [formGroup]="userForm" (ngSubmit)="logged()">
+    <input
+      class="form-control mr-sm-2"
+      formControlName="email"
+      type="text"
+      placeholder="email"
+    />
+    <input
+      class="form-control mr-sm-2"
+      type="text"
+      formControlName="password"
+      placeholder="password"
+    />
+    <button
+      class="btn btn-outline-success btn-light my-2 my-sm-0"
+      type="submit"
+    >
+      Log in
+    </button>
+  </form>
 </nav>
 
-
 <!-- Modal -->
-<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Enter Contest Data</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-
-        <br>
+        <br />
 
         <form [formGroup]="contestForm" (ngSubmit)="alert()">
           <div class="form-group">
+            <input
+              class="form-control"
+              formControlName="name"
+              placeholder="Contest name"
+            />
+            <br />
 
-          <input class="form-control" formControlName="name" placeholder="Contest name"/>
-          <br>
+            <div
+              formArrayName="teams"
+              *ngFor="let team of getTeamsControls(); index as i"
+            >
+              <label> Team {{ i + 1 }} </label>
+              <br />
+              <br />
 
-          <div formArrayName="teams" *ngFor="let team of getTeamsControls(); index as i">
+              <div formGroupName="{{ i }}">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  formControlName="name"
+                  placeholder="name"
+                />
+                <br />
 
-            <label> Team {{i+1}} </label>
-            <br>
-            <br>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="wins"
+                  name="wins"
+                  formControlName="wins"
+                  placeholder="wins"
+                />
+                <br />
 
-          <div formGroupName="{{i}}">
-
-            <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="name">
-            <br>
-
-            <input type="text" class="form-control" id="wins" name="wins" formControlName="wins" placeholder="wins">
-            <br>
-
-            <input type="text" class="form-control" id="losses" name="losses" formControlName="losses" placeholder="losses">
-            <br>
-
+                <input
+                  type="text"
+                  class="form-control"
+                  id="losses"
+                  name="losses"
+                  formControlName="losses"
+                  placeholder="losses"
+                />
+                <br />
+              </div>
             </div>
 
+            <p>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </p>
           </div>
-
-          <p>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </p>
-
-        </div>
-
         </form>
-
-
-
-
-
-
-       </div>
-
       </div>
-
     </div>
+  </div>
 </div>
-
-
-

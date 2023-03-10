@@ -2,6 +2,7 @@ package com.project.Contest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -25,8 +26,14 @@ public class ContestService {
     }
 
     public Optional<Contest> getContest(long id) {
-        Optional<Contest> user = contestRepository.findById(id);
-        return user;
+        Optional<Contest> contest = contestRepository.findById(id);
+        return contest;
+    }
+
+    public Contest getContestByName(String name) {
+
+        Contest contest = contestRepository.findByName(name);
+        return contest;
     }
 
     //update/update/put

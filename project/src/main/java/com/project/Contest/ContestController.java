@@ -35,8 +35,8 @@ public class ContestController {
         contestService.updateContest(contest);
     }
 
-    @DeleteMapping
-    public void deleteContest(@RequestBody Contest contest) {
-        contestService.deleteContest(contest);
+    @DeleteMapping("/{name}")
+    public void deleteContest(@PathVariable(name="name") String name) {
+        contestService.deleteContest(contestService.getContestByName(name));
     }
 }

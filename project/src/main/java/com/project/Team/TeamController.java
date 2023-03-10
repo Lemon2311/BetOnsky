@@ -35,6 +35,12 @@ public class TeamController {
         teamService.updateTeam(team);
     }
 
+    @PatchMapping("/name")
+    public void addBidderOnTeam(@PathVariable(name="name") String name) {
+        teamService.addBidderByTeamByName();
+
+    }
+
     @DeleteMapping
     public void deleteTeam(@RequestBody Team team) {
         teamService.deleteTeam(team);

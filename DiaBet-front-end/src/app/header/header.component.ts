@@ -67,19 +67,16 @@ export class HeaderComponent implements OnInit {
           this.user != null &&
           password != null &&
           password == this.user.password
-        )
-        {
+        ) {
           alert('logged in');
         } else {
-
           console.log(this.userForm.value);
 
-          this.user=this.userForm.value;
+          this.user = this.userForm.value;
 
           this.http
             .post(this.usersUrl, this.userForm.value)
             .subscribe((result) => console.log(result));
-
 
           alert('created user & logged in');
         }
@@ -90,16 +87,17 @@ export class HeaderComponent implements OnInit {
 
         if (this.user.isAdmin == true) {
           this.isAdmin = true;
-          this.newAdminState(true);
         } else {
           this.isAdmin = false;
-          this.newAdminState(false);
         }
+        this.newAdminState(this.isAdmin);
+
+
       });
   }
 
   newAdminState(state: boolean) {
-    this.data.changeMessage(state);
+    this.data.changeIsAdmin(state);
   }
 
   addNewContest(data: any) {

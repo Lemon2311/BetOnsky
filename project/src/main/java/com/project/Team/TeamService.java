@@ -32,15 +32,24 @@ public class TeamService {
     //update/update/put
     public void updateTeam(Team team) {
 
-        Optional<Team> theUser = teamRepository.findById(team.getId());
+        Optional<Team> theTeam = teamRepository.findById(team.getId());
 
-        theUser.map(team0 -> {
+        theTeam.map(team0 -> {
             team0.setName(team.getName());
             team0.setWins(team.getWins());
             team0.setLosses(team.getLosses());
             team0.setContests(team.getContests());
             return null;
         });
+    }
+
+    public void addBidderByTeamByName(String teamName) {
+
+        Team team = teamRepository.findByName(teamName);
+
+        team.
+
+
     }
 
     //delete/delete/delete
