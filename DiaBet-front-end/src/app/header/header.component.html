@@ -1,29 +1,34 @@
-<nav class="navbar navbar-light bg-danger">
-  <a class="navbar-brand">DiaBet</a>
+<nav class="navbar navbar-light color">
+  <a class="navbar-brand"> <img id="img" src="/assets/photos/dsBuffer.bmp.png"><img/></a>
+  <div class="moveAminMsj" [hidden]="!isAdmin
+  ">Hello admin wanna add another contest?</div>
   <button
     [hidden]="!isAdmin"
-    class="btn btn-outline-warning btn-light my-2 my-sm-0"
+    class="btn moveAddContest btn-outline-dark btn-light my-2 my-sm-0"
     type="submit"
   >
-    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-      >Add Contest</a
+    <div data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >Add Contest</div
     >
   </button>
   <form class="form-inline" [formGroup]="userForm" (ngSubmit)="logged()">
     <input
-      class="form-control mr-sm-2"
+    [hidden]="isLoggedIn"
+      class="form-control text-light bg-dark mr-sm-2 toTheLeft"
       formControlName="email"
       type="text"
       placeholder="email"
     />
     <input
-      class="form-control mr-sm-2"
+    [hidden]="isLoggedIn"
+      class="form-control text-light bg-dark mr-sm-2 toTheLeft1"
       type="text"
       formControlName="password"
       placeholder="password"
     />
     <button
-      class="btn btn-outline-success btn-light my-2 my-sm-0"
+    [hidden]="isLoggedIn"
+      class="btn btn-outline-success btn-light my-2 my-sm-0 toTheLeft0"
       type="submit"
     >
       Log in

@@ -1,0 +1,50 @@
+
+#img {
+
+
+  width: 475px;
+  height: 225px;
+
+}
+
+.toTheLeft{
+  position: relative;
+  top:30px;
+  right:50px;
+
+}
+
+.moveAddContest{
+  position: relative;
+  top:50px;
+  right:200px;
+}
+
+.moveAminMsj{
+  position: relative;
+  left:20px;
+}
+
+.toTheLeft1{
+  position: relative;
+  top:30px;
+  right:100px;
+
+}
+
+.toTheLeft0{
+  position: relative;
+  height: 36px;
+  top:-6.9px;
+  left:125px;
+
+}
+
+.color {
+  background-color: #fff8e6;
+}
+
+.center {
+  text-align: center;
+  border: 3px solid green;
+}

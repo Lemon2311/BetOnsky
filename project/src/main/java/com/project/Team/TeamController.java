@@ -37,7 +37,7 @@ public class TeamController {
 
     @PatchMapping("/name")
     public void addBidderOnTeam(@PathVariable(name="name") String name) {
-        teamService.addBidderByTeamByName();
+        //teamService.addBidderByTeamByName();
 
     }
 

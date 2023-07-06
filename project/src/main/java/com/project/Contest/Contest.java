@@ -1,11 +1,10 @@
 package com.project.Contest;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Team.Team;
 import com.project.User.User;
+import com.project.bidPerContestEntity.BidPerContest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +28,9 @@ public class Contest {
     private long id;
 
     private String name;
+
+    @ManyToOne
+    private BidPerContest bidPerContestEntity;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
