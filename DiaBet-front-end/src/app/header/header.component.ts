@@ -56,6 +56,9 @@ export class HeaderComponent implements OnInit {
   constructor(private http: HttpClient, private data: DataService) {}
 
   logged() {
+
+    this.data.updateUser(this.userForm.value);
+
     let email = this.userForm.get('email')?.value;
     let password = this.userForm.get('password')?.value;
 

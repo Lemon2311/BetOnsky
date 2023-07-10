@@ -3,7 +3,7 @@ package com.project.User;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
-import com.project.bidPerContestEntity.BidPerContest;
+import com.project.bidPerContest.BidPerContest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +32,8 @@ public class User {
 
     private Boolean isAdmin;
 
-    @ManyToMany(mappedBy = "user",cascade = CascadeType.PERSIST)
-    private List<BidPerContest> bidPerContestEntities;
+    @OneToMany
+    private List<BidPerContest> bidPerContest;
 
     @ManyToMany(mappedBy = "users",cascade = CascadeType.PERSIST)
     private List<Contest> contests;

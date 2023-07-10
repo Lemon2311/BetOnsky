@@ -25,6 +25,12 @@ public class TeamController {
         return team0;
     }
 
+    @GetMapping("/{name}")
+    public Optional<Team> getTeamByName(@PathVariable(name = "name") String name){
+        Team team = teamService.getTeam(name);
+        return Optional.of(team);
+    }
+
     @PostMapping
     public void addTeam(@RequestBody Team team) {
         teamService.addTeam(team);

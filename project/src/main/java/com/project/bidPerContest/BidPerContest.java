@@ -1,8 +1,9 @@
-package com.project.bidPerContestEntity;
+package com.project.bidPerContest;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
+import com.project.Team.Team;
 import com.project.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "bidPerContestEntity")
+@Table(name = "bidPerContest")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 
 public class BidPerContest {
@@ -24,13 +25,22 @@ public class BidPerContest {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @ManyToOne
+    private Team team;
+
     double bid;
 
-    @ManyToMany
+    @ManyToOne
     private User user;
 
-    @OneToMany
+    @ManyToOne
     private Contest contest;
 
 
+    public BidPerContest(Contest contest, double bid, Team team, User user) {
+        this.contest=contest;
+        this.bid=bid;
+        this.team=team;
+        this.user=user;
+    }
 }

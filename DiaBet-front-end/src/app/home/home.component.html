@@ -32,17 +32,94 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body"> <!--bidForm-->
+
+          <div [formGroup]="bidForm">
+
+                <input
+                type="text"
+                class="form-control"
+                id="bid"
+                name="bid"
+                formControlName="bid"
+                placeholder=0> <br>
+
+                <select formGroupName = "team" type="text" class="body form-select form-group" id="team" name="team" size="3">
+                  <option *ngFor="let team of object.teams;" value="name">{{team.name}}
+
+                  </option>
+                </select><br><br>
+
+                <div formGroupName="contest"
+                type="text"
+                class="form-group"
+                id="contest"
+                name="contest">
 
 
-              <select [ngModel]="teamToBet" id="teams" name="cars" size="3">
-                <option *ngFor="let team of object.teams;" value="name">{{team.name}}</option>
-              </select><br><br>
+
+                <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                formControlName="name"
+                >
+                {{object.name}}
+
+
+
+
+
+                </div>
+
+                <br>
+
+                <div formGroupName="user"
+                type="text"
+                class="form-group"
+                id="user"
+                name="user">
+
+                <input
+                type="text"
+                class="form-control"
+                id="email"
+                name="email"
+                formControlName="email"
+                placeholder="">
+
+                <input
+                type="text"
+                class="form-control"
+                id="password"
+                name="password"
+                formControlName="password"
+                placeholder="">
+
+                <input
+                type="text"
+                class="form-control"
+                id="isAdmin"
+                name="isAdmin"
+                formControlName="isAdmin"
+                placeholder=false>
+
+
+
+                </div>
+
+
+
+              <button (click)="addBetOnTeam()">
+
+              </button>
+          </div>
 
 
           </div>
           <div class="modal-footer">
-            <button (click)="betOnTeam(teamToBet);" type="button" class="btn btn-primary">Bet</button>
+            <button type="button" class="btn btn-primary">Bet</button>
             <button
               type="button"
               class="btn btn-secondary"

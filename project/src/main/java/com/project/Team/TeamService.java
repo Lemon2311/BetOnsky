@@ -58,4 +58,5 @@ public class TeamService {
     }
 
 
+    public Team getTeam(String name) { return teamRepository.findByName(name); }
 }

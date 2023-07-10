@@ -1,4 +1,4 @@
-package com.project.bidPerContestEntity;
+package com.project.bidPerContest;
 
 import com.project.Contest.Contest;
 import org.springframework.data.jpa.repository.JpaRepository;

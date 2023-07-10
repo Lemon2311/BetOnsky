@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
+import com.project.bidPerContest.BidPerContest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,9 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @OneToMany
+    private List<BidPerContest> bidsPerContest;
 
     @ManyToMany(mappedBy = "teams", cascade = CascadeType.PERSIST)
     private List<Contest> contests;
