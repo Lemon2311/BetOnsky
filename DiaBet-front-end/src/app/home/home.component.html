@@ -8,10 +8,16 @@
   class="carousel slide p-5 color"
   data-mdb-interval="false"
 >
-  <div class="carousel-inner">
+<form [formGroup]="bidCreateForm">
+<div class="carousel-inner">
     <div
-      *ngFor="let object of objectList; index as i"
-      class="carousel-item active"
+      *ngFor="let object of objectList;index as i;"
+      class="carousel-item active form-control"
+      type="text"
+      id="contest"
+      name="contest"
+      formControlName="contest"
+      placeholder=""
     >
 
 
@@ -34,7 +40,7 @@
           </div>
           <div class="modal-body"> <!--bidForm-->
 
-          <div [formGroup]="bidForm">
+          <div>
 
                 <input
                 type="text"
@@ -50,76 +56,14 @@
                   </option>
                 </select><br><br>
 
-                <div formGroupName="contest"
-                type="text"
-                class="form-group"
-                id="contest"
-                name="contest">
-
-
-
-                <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                formControlName="name"
-                >
-                {{object.name}}
-
-
-
-
-
-                </div>
-
-                <br>
-
-                <div formGroupName="user"
-                type="text"
-                class="form-group"
-                id="user"
-                name="user">
-
-                <input
-                type="text"
-                class="form-control"
-                id="email"
-                name="email"
-                formControlName="email"
-                placeholder="">
-
-                <input
-                type="text"
-                class="form-control"
-                id="password"
-                name="password"
-                formControlName="password"
-                placeholder="">
-
-                <input
-                type="text"
-                class="form-control"
-                id="isAdmin"
-                name="isAdmin"
-                formControlName="isAdmin"
-                placeholder=false>
-
-
-
-                </div>
-
-
-
-              <button (click)="addBetOnTeam()">
-
-              </button>
           </div>
 
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Bet</button>
+            <button type="submit" class="btn" (click)="addBetOnTeam()">
+              Bet
+            </button>
             <button
               type="button"
               class="btn btn-secondary"
@@ -206,7 +150,8 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-</div>
+</form>
+
 
 <div class="spacer">
 

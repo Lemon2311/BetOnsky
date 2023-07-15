@@ -6,6 +6,9 @@ import com.project.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class BidPerContestService {
 
@@ -24,5 +27,9 @@ public class BidPerContestService {
 
     public void setBidPerContest(BidPerContest bidPerContest){
         bidPerContestRepository.save(bidPerContest);
+    }
+
+    public List<BidPerContest> getBidsOfContest(){
+        return bidPerContestRepository.findAll();
     }
 }

@@ -1,5 +1,5 @@
+import { DataService } from './../services/data.service';
 import { data } from 'jquery';
-import { DataService } from '../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormArray, FormControl } from '@angular/forms';
@@ -56,8 +56,56 @@ export class HomeComponent implements OnInit {
   })
 
 
+  bidCreateForm = this.fb.group({
+
+    bid : 0,
+
+    team: this.fb.group,
+
+    user : this.getUser,
+
+    contest : this.fb.group
 
 
+
+  })
+
+
+ /* bidForm = this.fb.group({
+
+    bid : 0,
+
+    team: this.fb.group({
+
+     name  : [''],
+     wins  : [''],
+     loses : ['']
+
+    }),
+
+    contest : this.fb.group({
+      name:['']
+    }),
+
+    user: this.fb.group({
+
+    email : [''],
+
+    password : [''],
+
+    isAdmin : false
+
+  })
+
+})
+
+*/
+
+
+
+  dos(object:any){
+
+  }
 
 
   constructor(private http: HttpClient, private data: DataService, private fb: FormBuilder) {}
@@ -81,9 +129,24 @@ export class HomeComponent implements OnInit {
 
   }
 
+  bidFormValue(){
+   this.bidCreateForm.controls['team']
+   //this.bidCreateForm.controls['contest'].setValue(this.data.currentContest);
+   this.bidCreateForm.controls['user'].setValue(this.getUser);
+
+
+  }
+
   addBetOnTeam() {
 
-            //this.http.put((this.bidUrl + '/set/'),);
+   this.bidFormValue();
+
+            this.http.post((this.bidUrl),this.bidCreateForm.value).subscribe(result => {
+
+              console.log(result);
+              console.log(this.bidCreateForm.value);
+
+            });
 
   }
 
