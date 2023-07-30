@@ -15,10 +15,12 @@ public class BidPerContestService {
     @Autowired
     private BidPerContestRepository bidPerContestRepository;
 
-    public void patchBidOnContest(double bid, Contest contest, Team team, User user){
-        bidPerContestRepository.findByContest(contest).setBid(bid);
-        bidPerContestRepository.findByContest(contest).setContest(contest);
-        bidPerContestRepository.findByContest(contest).setTeam(team);
+    public void patchBidOnContest( long bidId, Team team, User user, Contest contest){
+
+        bidPerContestRepository.findById(bidId).setTeam(team);
+        bidPerContestRepository.findById(bidId).setUser(user);
+        bidPerContestRepository.findById(bidId).setContest(contest);
+
     }
 
     public double getBidOfContest(Contest contest){
@@ -31,5 +33,10 @@ public class BidPerContestService {
 
     public List<BidPerContest> getBidsOfContest(){
         return bidPerContestRepository.findAll();
+    }
+
+    public Optional<BidPerContest> getBidPerContest(long id) {
+       return Optional.ofNullable(bidPerContestRepository.findById(id));
+
     }
 }

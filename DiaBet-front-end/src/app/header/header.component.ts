@@ -59,8 +59,12 @@ export class HeaderComponent implements OnInit {
 
     this.data.updateUser(this.userForm.value);
 
+    console.log(this.userForm.value);
+
     let email = this.userForm.get('email')?.value;
     let password = this.userForm.get('password')?.value;
+
+    if(email!=null)
 
     if (email != null)
       this.http.get(this.usersUrl + '/email/' + email).subscribe((data) => {
@@ -72,10 +76,20 @@ export class HeaderComponent implements OnInit {
           password == this.user.password
         ) {
           alert('logged in');
+
+          if(email!=null)
+          this.data.changeUserEmail(email);
+
+          this.data.userEmailEasy=email;
+
+          console.log(this.data.currentUserEmail);
+
         } else {
           console.log(this.userForm.value);
 
           this.user = this.userForm.value;
+
+
 
           this.http
             .post(this.usersUrl, this.userForm.value)

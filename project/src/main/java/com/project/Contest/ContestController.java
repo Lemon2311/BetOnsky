@@ -25,8 +25,15 @@ public class ContestController {
         return contest0;
     }
 
+    @GetMapping("/name/{name}")
+    public Optional<Contest> getContestByName(@PathVariable(name = "name")String name) {
+        Optional<Contest> contest0 = Optional.ofNullable(contestService.getContestByName(name));
+        return contest0;
+    }
+
     @PostMapping
     public void addContest(@RequestBody Contest contest) {
+       // if(!contestService.getContest(contest.getId()).isPresent())
         contestService.addContest(contest);
     }
 

@@ -9,5 +9,7 @@ public interface BidPerContestRepository extends JpaRepository<BidPerContest, Lo
 
   BidPerContest findByContest(Contest contest);
 
+  BidPerContest findById(long id);
+
 
 }

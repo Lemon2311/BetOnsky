@@ -26,8 +26,8 @@ public class UserController {
     }
 
     @GetMapping("/email/{email}")
-    public Optional<User> getUserByEmail(@PathVariable(name = "email") String email) {
-        Optional<User> user0 = userService.getUserByEmail(email);
+    public Optional<Object> getUserByEmail(@PathVariable(name = "email") String email) {
+        Optional<Object> user0 = Optional.ofNullable(userService.getUserByEmail(email));
         return user0;
     }
 
@@ -39,7 +39,10 @@ public class UserController {
 
     @PostMapping
     public void addUser(@RequestBody User user) {
+
+       // if(!userService.getUser(user.getId()).isPresent())
         userService.addUser(user);
+
     }
 
     @PutMapping("/{id}")

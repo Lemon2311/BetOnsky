@@ -9,8 +9,10 @@ export class DataService {
   private stateIsAdmin = new BehaviorSubject<boolean>(false);
   currentIsAdmin = this.stateIsAdmin.asObservable();
 
-  private stateUserName = new BehaviorSubject<string>('');
-  currentUserName = this.stateUserName.asObservable();
+  public userEmailEasy : any;
+
+  private stateUserEmail = new BehaviorSubject<string>('');
+  currentUserEmail = this.stateUserEmail.asObservable();
 
   private stateUserObject = new Subject<any>;
   currentUserObject = this.stateUserObject.asObservable();
@@ -35,8 +37,8 @@ export class DataService {
     this.stateIsAdmin.next(isAdmin);
   }
 
-  changeUserName(name: string) {
-    this.stateUserName.next(name);
+  changeUserEmail(name: string) {
+    this.stateUserEmail.next(name);
   }
 
 

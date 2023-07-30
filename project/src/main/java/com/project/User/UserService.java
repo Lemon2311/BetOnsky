@@ -24,8 +24,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserByEmail(String email){
-        Optional<User> user = userRepository.findByEmail(email);
+    public User getUserByEmail(String email){
+        User user = userRepository.findByEmail(email);
         return user;
     }
 
@@ -49,7 +49,7 @@ public class UserService {
     }
 
     public void updateLoggedStateOfUser(String email, boolean value){
-        Optional<User> theUser = userRepository.findByEmail(email);
+        Optional<User> theUser = Optional.ofNullable(userRepository.findByEmail(email));
 
         theUser.map(user0 -> {
            user0.setLoggedIn(value);

@@ -8,19 +8,12 @@
   class="carousel slide p-5 color"
   data-mdb-interval="false"
 >
-<form [formGroup]="bidCreateForm">
+<form [formGroup]="bidForm">
 <div class="carousel-inner">
     <div
       *ngFor="let object of objectList;index as i;"
-      class="carousel-item active form-control"
-      type="text"
-      id="contest"
-      name="contest"
-      formControlName="contest"
-      placeholder=""
+      class="carousel-item active"
     >
-
-
 
     <!--modal-->
 
@@ -50,11 +43,13 @@
                 formControlName="bid"
                 placeholder=0> <br>
 
+                
                 <select formGroupName = "team" type="text" class="body form-select form-group" id="team" name="team" size="3">
                   <option *ngFor="let team of object.teams;" value="name">{{team.name}}
 
                   </option>
                 </select><br><br>
+
 
           </div>
 

@@ -1,6 +1,7 @@
 package com.project.User;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Contest.Contest;
 import com.project.bidPerContest.BidPerContest;
@@ -17,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class , property = "id",scope = User.class)
 public class User {
 
     @Id

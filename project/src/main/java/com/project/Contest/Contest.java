@@ -1,6 +1,7 @@
 package com.project.Contest;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.project.Team.Team;
 import com.project.User.User;
@@ -20,7 +21,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "contest")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id",scope = Contest.class)
+@JsonIdentityReference(alwaysAsId = true)
 public class Contest {
 
     @Id
